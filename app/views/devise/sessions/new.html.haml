@@ -1,0 +1,22 @@
+.signin
+  .signin__title
+    .signin__title__text
+      %h1 Sign In
+  .signin__box
+    .signin__box__text
+      %p 会員登録とログインに関するテストページです。
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      = render "devise/shared/error_messages", resource: resource
+      .signin__box__field
+        .signin__box__field__email
+          = f.label :email, class: "signin__box__field__email__label"
+          = f.email_field :email, class: "signin__box__field__email__input inputs", autofocus: true, autocomplete: "off"
+      .signin__box__field
+        .signin__box__field__password
+          = f.label :password, class: "signin__box__field__password__label"
+          = f.password_field :password, class: "signin__box__field__password__input inputs", autocomplete: "current-password"
+      .signin__box__action
+        = f.submit "Sign in", class: "signin__box__field__action__btn"
+    .signin__box__signup
+      = link_to "Sign Up", new_user_registration_path, class: "signin__box__signup__text"
+
