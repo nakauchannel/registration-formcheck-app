@@ -1,0 +1,13 @@
+.top
+  .top__title
+    .top__title__text
+      %h1 Hello World !
+  .top__box
+    .top__box__text
+      %p 会員登録後のトップページです。
+    .top__box__text
+      = current_user.nickname
+      = current_user.email
+      = current_user.postcode
+    .top__box__action
+      = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "top__box__action__btn"

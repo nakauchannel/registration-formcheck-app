@@ -1,0 +1,63 @@
+.signup
+  .signup__title
+    .signup__title__text
+      %h1 Sign up
+      %i.fas.fa-user-circle
+  .signup__box
+    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+      = render "devise/shared/error_messages", resource: resource
+      .box-scroll
+        .signup__box__field
+          .signup__box__field__nickname
+            = f.label :nickname, class: "signup__box__field__nickname__label"
+            = f.text_field :nickname, class: "signup__box__field__nickname__input inputs", autofocus: true, autocomplete: "off"
+        .signup__box__field
+          .signup__box__field__email
+            = f.label :email, class: "signup__box__field__email__label"
+            = f.email_field :email, class: "signup__box__field__email__input inputs", autofocus: true, autocomplete: "off"
+        .signup__box__field
+          .signup__box__field__password
+            = f.label :password, class: "signup__box__field__password__label"
+            = f.password_field :password, class: "signup__box__field__password__input inputs", autocomplete: "current-password"
+        .box-half
+          .signup__box__field
+            .signup__box__field__last_name
+              = f.label :last_name, class: "signup__box__field__last_name__label"
+              = f.text_field :last_name, class: "signup__box__field__last_name__input inputs", autofocus: true, autocomplete: "off"
+          .signup__box__field
+            .signup__box__field__first_name
+              = f.label :first_name, class: "signup__box__field__first_name__label"
+              = f.text_field :first_name, class: "signup__box__field__first_name__input inputs", autofocus: true, autocomplete: "off"
+        .signup__box__field
+          .signup__box__field__birthday
+            = f.label :birthday, class: "signup__box__field__birthday__label"
+            = f.date_select :birthday, use_month_numbers: true, start_year: 1930, end_year: (Time.now.year - 10), default: Date.new(1929, 1, 1), class: "signup__box__field__birthday__input inputs", autocomplete: "off"
+        .signup__box__field
+          .signup__box__field__postcode
+            = f.label :postcode, class: "signup__box__field__postcode__label" do
+              = 'Postal code'
+            = f.text_field :postcode, class: "signup__box__field__postcode__input inputs", autocomplete: "off"
+        .signup__box__field
+          .signup__box__field__prefecture_code
+            = f.label :prefecture_code, class: "signup__box__field__prefecture_code__label" do
+              = 'Prefecture'
+            = f.text_field :prefecture_code, class: "signup__box__field__prefecture_code__input inputs", collection: JpPrefecture::Prefecture.all, :value_method => :name, include_blank: '都道府県'
+        .signup__box__field
+          .signup__box__field__address_city
+            = f.label :address_city, class: "signup__box__field__address_city__label" do
+              = 'City'
+            = f.text_field :address_city, class: "signup__box__field__address_city__input inputs", autocomplete: "off"
+        .signup__box__field
+          .signup__box__field__address_street
+            = f.label :address_street, class: "signup__box__field__address_street__label" do
+              = 'Address Line'
+            = f.text_field :address_street, class: "signup__box__field__address_street__input inputs", autocomplete: "off"
+        .signup__box__field
+          .signup__box__field__address_building
+            = f.label :address_building, class: "signup__box__field__address_building__label" do
+              = 'Building'
+            = f.text_field :address_building, class: "signup__box__field__address_building__input inputs", autocomplete: "off"
+        .signup__box__action
+          = f.submit "Sign Up", class: "signup__box__field__action__btn"
+    .signup__box__signin
+      = link_to "Sign In", new_user_session_path, class: "signup__box__signin__text"
