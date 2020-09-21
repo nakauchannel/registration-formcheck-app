@@ -1,13 +1,32 @@
-.top
-  .top__title
-    .top__title__text
-      %h1 Hello World !
-  .top__box
-    .top__box__text
-      %p 会員登録後のトップページです。
-    .top__box__text
-      = current_user.nickname
-      = current_user.email
-      = current_user.postcode
-    .top__box__action
-      = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "top__box__action__btn"
+%body
+  %input#humberger_check{:role => "button", :title => "menu", :type => "checkbox"}/
+  %label.humberger{"aria-hidden" => "true", :for => "humberger_check", :title => "menu"}
+    %span
+  %header.header_bar
+    %h1 nakauchannel
+  %main.container
+    %section.content
+      %h2 nakauchannel
+  %nav.hidden_menu
+    %ul
+      %li
+        %a{:href => "#"}
+          %i.icon-picture>
+          RECIPES
+      %li
+        %a{:href => "#"}
+          %i.icon-film>
+          YOUTUBE
+      %li
+        %a{:href => "#"}
+          %i.icon-music>
+          BLOG
+      %li
+        %a{:href => "#"}
+          %i.icon-headphones>
+          PERSONAL
+      %li
+        %a{:href => "#"}
+          %i.icon-cogs>
+          CONTACT
+          %i.fas.fa-user
